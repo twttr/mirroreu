@@ -1,5 +1,6 @@
 import Foundation
 import os
+import Sentry
 
 let serviceName = "com.twttr.MirroreuHelper"
 let plistPath = "/private/var/db/os_eligibility/eligibility.plist"
@@ -316,6 +317,17 @@ sigHupSource.setEventHandler {
     exit(0)
 }
 sigHupSource.resume()
+
+if let dsn = Bundle.main.infoDictionary?["SentryDSN"] as? String,
+   !dsn.isEmpty,
+   !dsn.hasPrefix("$(") {
+    SentrySDK.start { options in
+        options.dsn = dsn
+        #if DEBUG
+        options.enabled = false
+        #endif
+    }
+}
 
 logger.info("Helper daemon started")
 dispatchMain()
