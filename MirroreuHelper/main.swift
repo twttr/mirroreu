@@ -129,7 +129,7 @@ final class HelperService: NSObject, HelperProtocol, NSXPCListenerDelegate {
     }
 
     private func canAccessPlist() -> Bool {
-        FileManager.default.isReadableFile(atPath: plistPath)
+        (try? Data(contentsOf: URL(fileURLWithPath: plistPath), options: .mappedIfSafe)) != nil
     }
 
     private func readPlist() -> NSMutableDictionary? {

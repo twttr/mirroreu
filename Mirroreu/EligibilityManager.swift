@@ -12,26 +12,30 @@ protocol HelperConnection {
 @Observable
 final class EligibilityManager {
 
-    enum DaemonStatus {
-        case unknown
-        case notRegistered
-        case requiresApproval
-        case enabled
-        case notFound
-    }
-
     var isEnabled = false
     var lastError: String?
     var needsFullDiskAccess = false
-    var daemonStatus: DaemonStatus = .unknown
+    var daemonReady = false
+
+    var onFullDiskAccessNeeded: () -> Void = {}
 
     private let helperServiceName = "com.twttr.MirroreuHelper"
     private let plistName = "com.twttr.MirroreuHelper.plist"
     private var connection: HelperConnection?
     private let logger = Logger(subsystem: "com.twttr.Mirroreu", category: "eligibility")
+    private var statusTimer: Timer?
+    private var helperResponded = false
 
     convenience init() {
         self.init(connection: nil)
+        onFullDiskAccessNeeded = {
+            DispatchQueue.main.async {
+                let process = Process()
+                process.executableURL = URL(fileURLWithPath: "/usr/bin/open")
+                process.arguments = ["x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_AllFiles"]
+                try? process.run()
+            }
+        }
         NotificationCenter.default.addObserver(
             forName: NSApplication.willTerminateNotification,
             object: nil,
@@ -39,15 +43,19 @@ final class EligibilityManager {
         ) { [weak self] _ in
             self?.cleanup()
         }
+        startStatusPolling()
     }
 
     init(connection: HelperConnection?) {
         self.connection = connection
+        self.helperResponded = connection != nil
         refreshDaemonStatus()
-        checkHelperStatus()
+        if connection != nil {
+            checkHelperStatus()
+        }
     }
 
-    func registerDaemon() {
+    func registerAndOpenLoginItems() {
         let service = SMAppService.daemon(plistName: plistName)
         do {
             try service.register()
@@ -56,34 +64,23 @@ final class EligibilityManager {
             lastError = String(localized: "Failed to register daemon: \(error.localizedDescription)")
             logger.error("Failed to register daemon: \(error.localizedDescription)")
         }
-        refreshDaemonStatus()
-    }
-
-    func openSystemSettings() {
         SMAppService.openSystemSettingsLoginItems()
+        refreshDaemonStatus()
     }
 
     func refreshDaemonStatus() {
         let service = SMAppService.daemon(plistName: plistName)
-        let status = service.status
+        daemonReady = service.status == .enabled
 
-        switch status {
-        case .notRegistered:
-            daemonStatus = .notRegistered
-        case .enabled:
-            daemonStatus = .enabled
-        case .requiresApproval:
-            daemonStatus = .requiresApproval
-        case .notFound:
-            daemonStatus = .notFound
-        @unknown default:
-            daemonStatus = .unknown
+        if daemonReady && !helperResponded {
+            connection = nil
+            checkHelperStatus()
         }
-    }
 
-    func openFullDiskAccessSettings() {
-        guard let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_AllFiles") else { return }
-        NSWorkspace.shared.open(url)
+        if daemonReady && helperResponded {
+            statusTimer?.invalidate()
+            statusTimer = nil
+        }
     }
 
     func enable() {
@@ -92,10 +89,9 @@ final class EligibilityManager {
         getHelper()?.enable { [weak self] success, error in
             if success {
                 self?.isEnabled = true
-                self?.logger.info("Enabled successfully")
             } else if error == HelperErrorCode.permissionDenied {
                 self?.needsFullDiskAccess = true
-                self?.logger.warning("Enable failed: Full Disk Access required")
+                self?.onFullDiskAccessNeeded()
             } else {
                 self?.lastError = error ?? String(localized: "Failed to enable")
                 self?.logger.error("Enable failed: \(error ?? "unknown")")
@@ -108,7 +104,6 @@ final class EligibilityManager {
         getHelper()?.disable { [weak self] success, error in
             if success {
                 self?.isEnabled = false
-                self?.logger.info("Disabled successfully")
             } else {
                 self?.lastError = error ?? String(localized: "Failed to disable")
                 self?.logger.error("Disable failed: \(error ?? "unknown")")
@@ -117,15 +112,22 @@ final class EligibilityManager {
     }
 
     func cleanup() {
+        statusTimer?.invalidate()
         if isEnabled {
             disable()
         }
     }
 
+    private func startStatusPolling() {
+        statusTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [weak self] _ in
+            self?.refreshDaemonStatus()
+        }
+    }
+
     private func checkHelperStatus() {
         getHelper()?.isRunning { [weak self] running in
+            self?.helperResponded = true
             self?.isEnabled = running
-            self?.logger.info("Initial status: \(running ? "enabled" : "disabled")")
         }
     }
 
@@ -142,9 +144,9 @@ final class EligibilityManager {
         }
         xpcConnection.resume()
 
-        let proxy = xpcConnection.remoteObjectProxyWithErrorHandler({ [weak self] error in
+        let proxy = xpcConnection.remoteObjectProxyWithErrorHandler({ [weak self] _ in
             DispatchQueue.main.async {
-                self?.lastError = error.localizedDescription
+                self?.connection = nil
             }
         })
 

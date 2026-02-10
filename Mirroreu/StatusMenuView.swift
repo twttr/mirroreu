@@ -4,20 +4,7 @@ struct StatusMenuView: View {
     let manager: EligibilityManager
 
     var body: some View {
-        switch manager.daemonStatus {
-        case .notRegistered:
-            Button("Install Helper") {
-                manager.registerDaemon()
-            }
-        case .requiresApproval:
-            Text("Helper needs approval")
-            Button("Open System Settings") {
-                manager.openSystemSettings()
-            }
-            Button("Refresh Status") {
-                manager.refreshDaemonStatus()
-            }
-        case .enabled:
+        if manager.daemonReady {
             if manager.isEnabled {
                 Text("Status: Enabled")
             } else {
@@ -35,25 +22,16 @@ struct StatusMenuView: View {
                     manager.enable()
                 }
             }
-        case .notFound:
-            Text("Helper not found")
-            Button("Install Helper") {
-                manager.registerDaemon()
+        } else {
+            Button("Enable Mirroreu in Login Items") {
+                manager.registerAndOpenLoginItems()
             }
-            Button("Refresh Status") {
-                manager.refreshDaemonStatus()
-            }
-        case .unknown:
-            Text("Checking helper status...")
         }
 
         if manager.needsFullDiskAccess {
             Divider()
-            Text("Helper needs Full Disk Access")
+            Text("Enable Mirroreu in Full Disk Access")
                 .foregroundStyle(.orange)
-            Button("Open Privacy Settings") {
-                manager.openFullDiskAccessSettings()
-            }
             Button("Retry") {
                 manager.enable()
             }
