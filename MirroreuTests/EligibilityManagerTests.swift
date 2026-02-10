@@ -5,6 +5,7 @@ final class MockHelperConnection: HelperConnection {
     var enableResult: (Bool, String?) = (true, nil)
     var disableResult: (Bool, String?) = (true, nil)
     var runningResult = false
+    var accessResult = true
     var enableCallCount = 0
     var disableCallCount = 0
 
@@ -20,6 +21,10 @@ final class MockHelperConnection: HelperConnection {
 
     func isRunning(reply: @escaping (Bool) -> Void) {
         reply(runningResult)
+    }
+
+    func checkAccess(reply: @escaping (Bool) -> Void) {
+        reply(accessResult)
     }
 }
 

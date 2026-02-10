@@ -118,6 +118,12 @@ final class HelperService: NSObject, HelperProtocol, NSXPCListenerDelegate {
         }
     }
 
+    func checkAccess(reply: @escaping (Bool) -> Void) {
+        monitorQueue.async { [self] in
+            reply(canAccessPlist())
+        }
+    }
+
     func shutdown() {
         monitorQueue.sync { [self] in
             stopMonitoring()

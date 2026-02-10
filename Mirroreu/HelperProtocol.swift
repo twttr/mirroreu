@@ -4,6 +4,7 @@ import Foundation
     func enable(reply: @escaping (Bool, String?) -> Void)
     func disable(reply: @escaping (Bool, String?) -> Void)
     func isRunning(reply: @escaping (Bool) -> Void)
+    func checkAccess(reply: @escaping (Bool) -> Void)
 }
 
 enum HelperErrorCode {

@@ -32,9 +32,6 @@ struct StatusMenuView: View {
             Divider()
             Text("Enable Mirroreu in Full Disk Access")
                 .foregroundStyle(.orange)
-            Button("Retry") {
-                manager.enable()
-            }
         }
 
         if let error = manager.lastError {

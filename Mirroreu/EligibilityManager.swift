@@ -7,6 +7,7 @@ protocol HelperConnection {
     func enable(reply: @escaping (Bool, String?) -> Void)
     func disable(reply: @escaping (Bool, String?) -> Void)
     func isRunning(reply: @escaping (Bool) -> Void)
+    func checkAccess(reply: @escaping (Bool) -> Void)
 }
 
 @Observable
@@ -128,6 +129,16 @@ final class EligibilityManager {
         getHelper()?.isRunning { [weak self] running in
             self?.helperResponded = true
             self?.isEnabled = running
+            self?.checkHelperAccess()
+        }
+    }
+
+    private func checkHelperAccess() {
+        getHelper()?.checkAccess { [weak self] hasAccess in
+            if !hasAccess {
+                self?.needsFullDiskAccess = true
+                self?.onFullDiskAccessNeeded()
+            }
         }
     }
 
@@ -178,6 +189,12 @@ final class XPCHelperWrapper: HelperConnection {
     func isRunning(reply: @escaping (Bool) -> Void) {
         (proxy as? HelperProtocol)?.isRunning { running in
             DispatchQueue.main.async { reply(running) }
+        }
+    }
+
+    func checkAccess(reply: @escaping (Bool) -> Void) {
+        (proxy as? HelperProtocol)?.checkAccess { hasAccess in
+            DispatchQueue.main.async { reply(hasAccess) }
         }
     }
 }
