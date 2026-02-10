@@ -55,10 +55,9 @@ On your iPhone, change the App Store country to any country outside the EU in **
 ## Usage
 
 1. Launch Mirroreu — an iPhone icon appears in your menu bar
-2. Click **Install Helper** to register the privileged daemon
-3. Approve the helper in **System Settings > Login Items**
+2. Click **Enable Mirroreu in Login Items** and approve the helper in System Settings
+3. If prompted, grant Full Disk Access in **System Settings > Privacy & Security** (the app will restart)
 4. Click **Enable iPhone Mirroring**
-5. If prompted, grant Full Disk Access and retry
 
 The menu bar icon turns green when enabled and red when disabled.
 
