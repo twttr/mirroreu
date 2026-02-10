@@ -45,7 +45,7 @@
 ### Requirements
 
 - macOS 15.2 or later
-- Xcode 16.3 or later
+- Xcode 26.0 or later
 - Full Disk Access (granted to the helper daemon)
 
 ## Prerequisites
