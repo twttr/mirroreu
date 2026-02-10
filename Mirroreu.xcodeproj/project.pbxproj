@@ -1,0 +1,642 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		057F8D9F2F3B84AF00CBC0A0 /* MirroreuHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = 057F8D952F3B846E00CBC0A0 /* MirroreuHelper */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		057F8DA62F3B854500CBC0A0 /* com.twttr.MirroreuHelper.plist in Resources */ = {isa = PBXBuildFile; fileRef = 057F8DA52F3B854500CBC0A0 /* com.twttr.MirroreuHelper.plist */; };
+		057F8DA72F3B856400CBC0A0 /* com.twttr.MirroreuHelper.plist in CopyFiles */ = {isa = PBXBuildFile; fileRef = 057F8DA52F3B854500CBC0A0 /* com.twttr.MirroreuHelper.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		057F8D842F3B7F0900CBC0A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 059B7FC62F3B76CE00FA1200 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 059B7FCD2F3B76CE00FA1200;
+			remoteInfo = Mirroreu;
+		};
+		057F8DA32F3B84E500CBC0A0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 059B7FC62F3B76CE00FA1200 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 057F8D942F3B846E00CBC0A0;
+			remoteInfo = MirroreuHelper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		057F8D932F3B846E00CBC0A0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+		057F8D9E2F3B849A00CBC0A0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				057F8D9F2F3B84AF00CBC0A0 /* MirroreuHelper in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		057F8DA02F3B84BE00CBC0A0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchDaemons;
+			dstSubfolderSpec = 1;
+			files = (
+				057F8DA72F3B856400CBC0A0 /* com.twttr.MirroreuHelper.plist in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		057F8D802F3B7F0900CBC0A0 /* MirroreuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MirroreuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		057F8D952F3B846E00CBC0A0 /* MirroreuHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MirroreuHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+		057F8DA52F3B854500CBC0A0 /* com.twttr.MirroreuHelper.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = com.twttr.MirroreuHelper.plist; sourceTree = "<group>"; };
+		059B7FCE2F3B76CE00FA1200 /* Mirroreu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mirroreu.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		057F8D9D2F3B847B00CBC0A0 /* Exceptions for "Mirroreu" folder in "MirroreuHelper" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				HelperProtocol.swift,
+			);
+			target = 057F8D942F3B846E00CBC0A0 /* MirroreuHelper */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		057F8D812F3B7F0900CBC0A0 /* MirroreuTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MirroreuTests;
+			sourceTree = "<group>";
+		};
+		057F8D962F3B846E00CBC0A0 /* MirroreuHelper */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = MirroreuHelper;
+			sourceTree = "<group>";
+		};
+		059B7FD02F3B76CE00FA1200 /* Mirroreu */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				057F8D9D2F3B847B00CBC0A0 /* Exceptions for "Mirroreu" folder in "MirroreuHelper" target */,
+			);
+			path = Mirroreu;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		057F8D7D2F3B7F0900CBC0A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		057F8D922F3B846E00CBC0A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		059B7FCB2F3B76CE00FA1200 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		059B7FC52F3B76CE00FA1200 = {
+			isa = PBXGroup;
+			children = (
+				057F8DA52F3B854500CBC0A0 /* com.twttr.MirroreuHelper.plist */,
+				059B7FD02F3B76CE00FA1200 /* Mirroreu */,
+				057F8D812F3B7F0900CBC0A0 /* MirroreuTests */,
+				057F8D962F3B846E00CBC0A0 /* MirroreuHelper */,
+				059B7FCF2F3B76CE00FA1200 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		059B7FCF2F3B76CE00FA1200 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				059B7FCE2F3B76CE00FA1200 /* Mirroreu.app */,
+				057F8D802F3B7F0900CBC0A0 /* MirroreuTests.xctest */,
+				057F8D952F3B846E00CBC0A0 /* MirroreuHelper */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		057F8D7F2F3B7F0900CBC0A0 /* MirroreuTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 057F8D882F3B7F0900CBC0A0 /* Build configuration list for PBXNativeTarget "MirroreuTests" */;
+			buildPhases = (
+				057F8D7C2F3B7F0900CBC0A0 /* Sources */,
+				057F8D7D2F3B7F0900CBC0A0 /* Frameworks */,
+				057F8D7E2F3B7F0900CBC0A0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				057F8D852F3B7F0900CBC0A0 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				057F8D812F3B7F0900CBC0A0 /* MirroreuTests */,
+			);
+			name = MirroreuTests;
+			packageProductDependencies = (
+			);
+			productName = MirroreuTests;
+			productReference = 057F8D802F3B7F0900CBC0A0 /* MirroreuTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		057F8D942F3B846E00CBC0A0 /* MirroreuHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 057F8D992F3B846E00CBC0A0 /* Build configuration list for PBXNativeTarget "MirroreuHelper" */;
+			buildPhases = (
+				057F8D912F3B846E00CBC0A0 /* Sources */,
+				057F8D922F3B846E00CBC0A0 /* Frameworks */,
+				057F8D932F3B846E00CBC0A0 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				057F8D962F3B846E00CBC0A0 /* MirroreuHelper */,
+			);
+			name = MirroreuHelper;
+			packageProductDependencies = (
+			);
+			productName = MirroreuHelper;
+			productReference = 057F8D952F3B846E00CBC0A0 /* MirroreuHelper */;
+			productType = "com.apple.product-type.tool";
+		};
+		059B7FCD2F3B76CE00FA1200 /* Mirroreu */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 059B7FD92F3B76CF00FA1200 /* Build configuration list for PBXNativeTarget "Mirroreu" */;
+			buildPhases = (
+				059B7FCA2F3B76CE00FA1200 /* Sources */,
+				059B7FCB2F3B76CE00FA1200 /* Frameworks */,
+				059B7FCC2F3B76CE00FA1200 /* Resources */,
+				057F8D9E2F3B849A00CBC0A0 /* CopyFiles */,
+				057F8DA02F3B84BE00CBC0A0 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				057F8DA42F3B84E500CBC0A0 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				059B7FD02F3B76CE00FA1200 /* Mirroreu */,
+			);
+			name = Mirroreu;
+			packageProductDependencies = (
+			);
+			productName = Mirroreu;
+			productReference = 059B7FCE2F3B76CE00FA1200 /* Mirroreu.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		059B7FC62F3B76CE00FA1200 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2630;
+				LastUpgradeCheck = 2630;
+				TargetAttributes = {
+					057F8D7F2F3B7F0900CBC0A0 = {
+						CreatedOnToolsVersion = 26.3;
+						TestTargetID = 059B7FCD2F3B76CE00FA1200;
+					};
+					057F8D942F3B846E00CBC0A0 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+					059B7FCD2F3B76CE00FA1200 = {
+						CreatedOnToolsVersion = 26.3;
+					};
+				};
+			};
+			buildConfigurationList = 059B7FC92F3B76CE00FA1200 /* Build configuration list for PBXProject "Mirroreu" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				de,
+				sv,
+				pl,
+				es,
+				"pt-PT",
+				bg,
+				cs,
+				da,
+				nl,
+				fr,
+				fi,
+				el,
+				ca,
+				hr,
+				it,
+				sk,
+				sl,
+				ro,
+				hu,
+				lt,
+				uk,
+				ru,
+			);
+			mainGroup = 059B7FC52F3B76CE00FA1200;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 059B7FCF2F3B76CE00FA1200 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				059B7FCD2F3B76CE00FA1200 /* Mirroreu */,
+				057F8D7F2F3B7F0900CBC0A0 /* MirroreuTests */,
+				057F8D942F3B846E00CBC0A0 /* MirroreuHelper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		057F8D7E2F3B7F0900CBC0A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		059B7FCC2F3B76CE00FA1200 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				057F8DA62F3B854500CBC0A0 /* com.twttr.MirroreuHelper.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		057F8D7C2F3B7F0900CBC0A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		057F8D912F3B846E00CBC0A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		059B7FCA2F3B76CE00FA1200 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		057F8D852F3B7F0900CBC0A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 059B7FCD2F3B76CE00FA1200 /* Mirroreu */;
+			targetProxy = 057F8D842F3B7F0900CBC0A0 /* PBXContainerItemProxy */;
+		};
+		057F8DA42F3B84E500CBC0A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 057F8D942F3B846E00CBC0A0 /* MirroreuHelper */;
+			targetProxy = 057F8DA32F3B84E500CBC0A0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		057F8D862F3B7F0900CBC0A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65ST2RPTAF;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twttr.MirroreuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mirroreu.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mirroreu";
+			};
+			name = Debug;
+		};
+		057F8D872F3B7F0900CBC0A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65ST2RPTAF;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twttr.MirroreuTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mirroreu.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Mirroreu";
+			};
+			name = Release;
+		};
+		057F8D9A2F3B846E00CBC0A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 65ST2RPTAF;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twttr.MirroreuHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		057F8D9B2F3B846E00CBC0A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 65ST2RPTAF;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twttr.MirroreuHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		059B7FD72F3B76CF00FA1200 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 65ST2RPTAF;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		059B7FD82F3B76CF00FA1200 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 65ST2RPTAF;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		059B7FDA2F3B76CF00FA1200 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65ST2RPTAF;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Mirroreu;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twttr.Mirroreu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		059B7FDB2F3B76CF00FA1200 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65ST2RPTAF;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Mirroreu;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.twttr.Mirroreu;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		057F8D882F3B7F0900CBC0A0 /* Build configuration list for PBXNativeTarget "MirroreuTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				057F8D862F3B7F0900CBC0A0 /* Debug */,
+				057F8D872F3B7F0900CBC0A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		057F8D992F3B846E00CBC0A0 /* Build configuration list for PBXNativeTarget "MirroreuHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				057F8D9A2F3B846E00CBC0A0 /* Debug */,
+				057F8D9B2F3B846E00CBC0A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		059B7FC92F3B76CE00FA1200 /* Build configuration list for PBXProject "Mirroreu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				059B7FD72F3B76CF00FA1200 /* Debug */,
+				059B7FD82F3B76CF00FA1200 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		059B7FD92F3B76CF00FA1200 /* Build configuration list for PBXNativeTarget "Mirroreu" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				059B7FDA2F3B76CF00FA1200 /* Debug */,
+				059B7FDB2F3B76CF00FA1200 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 059B7FC62F3B76CE00FA1200 /* Project object */;
+}
