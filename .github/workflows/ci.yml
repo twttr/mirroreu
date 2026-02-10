@@ -13,6 +13,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Clean SPM cache
+        run: rm -rf ~/Library/Caches/org.swift.swiftpm
+
       - name: Build and Test
         run: |
           xcodebuild test \
