@@ -27,6 +27,13 @@
 
 ## Installation
 
+### Homebrew
+
+```bash
+brew tap twttr/apps
+brew install --cask mirroreu
+```
+
 ### Build from Source
 
 1. Clone the repository:
