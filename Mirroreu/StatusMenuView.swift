@@ -43,7 +43,6 @@ struct StatusMenuView: View {
         Divider()
 
         Button("Quit") {
-            manager.cleanup()
             NSApplication.shared.terminate(nil)
         }
         .keyboardShortcut("q")
