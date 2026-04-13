@@ -29,6 +29,7 @@ final class MockHelperConnection: HelperConnection {
 }
 
 @Suite("EligibilityManager")
+@MainActor
 struct EligibilityManagerTests {
 
     @Test func initialStateIsDisabled() {
@@ -98,7 +99,7 @@ struct EligibilityManagerTests {
         #expect(manager.lastError == "Permission denied")
     }
 
-    @Test func cleanupWhenEnabled() {
+    @Test func cleanupReleasesResources() {
         let mock = MockHelperConnection()
         mock.enableResult = (true, nil)
         let manager = EligibilityManager(connection: mock)
@@ -108,7 +109,7 @@ struct EligibilityManagerTests {
 
         manager.cleanup()
 
-        #expect(mock.disableCallCount == 1)
+        #expect(mock.disableCallCount == 0)
     }
 
     @Test func cleanupWhenDisabled() {
@@ -188,5 +189,34 @@ struct EligibilityManagerTests {
         manager.enable()
         #expect(manager.needsFullDiskAccess == false)
         #expect(manager.isEnabled == true)
+    }
+
+    @Test func terminationCleanupDisablesWhenEnabled() async {
+        let mock = MockHelperConnection()
+        mock.enableResult = (true, nil)
+        let manager = EligibilityManager(connection: mock)
+
+        manager.enable()
+        #expect(manager.isEnabled == true)
+
+        await withCheckedContinuation { continuation in
+            manager.performTerminationCleanup {
+                continuation.resume()
+            }
+        }
+        #expect(mock.disableCallCount == 1)
+        #expect(manager.isEnabled == false)
+    }
+
+    @Test func terminationCleanupSkipsWhenDisabled() async {
+        let mock = MockHelperConnection()
+        let manager = EligibilityManager(connection: mock)
+
+        await withCheckedContinuation { continuation in
+            manager.performTerminationCleanup {
+                continuation.resume()
+            }
+        }
+        #expect(mock.disableCallCount == 0)
     }
 }

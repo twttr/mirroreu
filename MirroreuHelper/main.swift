@@ -35,6 +35,7 @@ final class HelperService: NSObject, HelperProtocol, NSXPCListenerDelegate {
     private var originalValues: [String: NSObject] = [:]
     private var plistFormat: PropertyListSerialization.PropertyListFormat = .binary
     private let monitorQueue = DispatchQueue(label: "com.twttr.MirroreuHelper.monitor")
+    private var restartWorkItem: DispatchWorkItem?
 
     private var isMonitoring: Bool {
         fileWatcher != nil || safetyTimer != nil
@@ -167,7 +168,7 @@ final class HelperService: NSObject, HelperProtocol, NSXPCListenerDelegate {
             return false
         }
         do {
-            try data.write(to: URL(fileURLWithPath: plistPath))
+            try data.write(to: URL(fileURLWithPath: plistPath), options: .atomic)
             return true
         } catch {
             logger.error("Failed to write plist: \(error.localizedDescription)")
@@ -241,6 +242,8 @@ final class HelperService: NSObject, HelperProtocol, NSXPCListenerDelegate {
     }
 
     private func stopMonitoring() {
+        restartWorkItem?.cancel()
+        restartWorkItem = nil
         fileWatcher?.cancel()
         fileWatcher = nil
         safetyTimer?.cancel()
@@ -252,6 +255,7 @@ final class HelperService: NSObject, HelperProtocol, NSXPCListenerDelegate {
     }
 
     private func setupFileWatcher() {
+        guard fileWatcher == nil else { return }
         let fd = open(plistPath, O_EVTONLY)
         guard fd >= 0 else {
             logger.warning("Could not open plist for file watching")
@@ -277,16 +281,21 @@ final class HelperService: NSObject, HelperProtocol, NSXPCListenerDelegate {
     }
 
     private func restartFileWatcher() {
+        restartWorkItem?.cancel()
         fileWatcher?.cancel()
         fileWatcher = nil
         if fileDescriptor >= 0 {
             close(fileDescriptor)
             fileDescriptor = -1
         }
-        monitorQueue.asyncAfter(deadline: .now() + 0.5) { [weak self] in
-            self?.patchPlist()
-            self?.setupFileWatcher()
+        let workItem = DispatchWorkItem { [weak self] in
+            guard let self else { return }
+            self.restartWorkItem = nil
+            self.patchPlist()
+            self.setupFileWatcher()
         }
+        restartWorkItem = workItem
+        monitorQueue.asyncAfter(deadline: .now() + 0.5, execute: workItem)
     }
 
     private func setupSafetyTimer() {

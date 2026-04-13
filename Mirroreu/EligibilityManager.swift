@@ -11,6 +11,7 @@ protocol HelperConnection {
 }
 
 @Observable
+@MainActor
 final class EligibilityManager {
 
     var isEnabled = false
@@ -23,6 +24,7 @@ final class EligibilityManager {
     private let helperServiceName = "com.twttr.MirroreuHelper"
     private let plistName = "com.twttr.MirroreuHelper.plist"
     private var connection: HelperConnection?
+    private var xpcConnection: NSXPCConnection?
     private let logger = Logger(subsystem: "com.twttr.Mirroreu", category: "eligibility")
     private var statusTimer: Timer?
     private var helperResponded = false
@@ -36,13 +38,6 @@ final class EligibilityManager {
                 process.arguments = ["x-apple.systempreferences:com.apple.settings.PrivacySecurity.extension?Privacy_AllFiles"]
                 try? process.run()
             }
-        }
-        NotificationCenter.default.addObserver(
-            forName: NSApplication.willTerminateNotification,
-            object: nil,
-            queue: .main
-        ) { [weak self] _ in
-            self?.cleanup()
         }
         startStatusPolling()
     }
@@ -114,14 +109,44 @@ final class EligibilityManager {
 
     func cleanup() {
         statusTimer?.invalidate()
-        if isEnabled {
-            disable()
+        statusTimer = nil
+        xpcConnection?.invalidate()
+        xpcConnection = nil
+        connection = nil
+    }
+
+    func performTerminationCleanup(completion: @escaping () -> Void) {
+        statusTimer?.invalidate()
+        statusTimer = nil
+        guard isEnabled else {
+            xpcConnection?.invalidate()
+            xpcConnection = nil
+            connection = nil
+            completion()
+            return
         }
+        var completed = false
+        let finish: () -> Void = { [weak self] in
+            guard !completed else { return }
+            completed = true
+            self?.isEnabled = false
+            self?.xpcConnection?.invalidate()
+            self?.xpcConnection = nil
+            self?.connection = nil
+            completion()
+        }
+        getHelper()?.disable { _, _ in
+            DispatchQueue.main.async { finish() }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) { finish() }
     }
 
     private func startStatusPolling() {
         statusTimer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { [weak self] _ in
-            self?.refreshDaemonStatus()
+            guard let self else { return }
+            Task { @MainActor [weak self] in
+                self?.refreshDaemonStatus()
+            }
         }
     }
 
@@ -146,21 +171,25 @@ final class EligibilityManager {
         if let connection {
             return connection
         }
-        let xpcConnection = NSXPCConnection(machServiceName: helperServiceName, options: .privileged)
-        xpcConnection.remoteObjectInterface = NSXPCInterface(with: HelperProtocol.self)
-        xpcConnection.invalidationHandler = { [weak self] in
+        let xpc = NSXPCConnection(machServiceName: helperServiceName, options: .privileged)
+        xpc.remoteObjectInterface = NSXPCInterface(with: HelperProtocol.self)
+        xpc.invalidationHandler = { [weak self] in
             DispatchQueue.main.async {
                 self?.connection = nil
+                self?.xpcConnection = nil
             }
         }
-        xpcConnection.resume()
+        xpc.resume()
 
-        let proxy = xpcConnection.remoteObjectProxyWithErrorHandler({ [weak self] _ in
+        let proxy = xpc.remoteObjectProxyWithErrorHandler({ [weak self] _ in
             DispatchQueue.main.async {
+                self?.xpcConnection?.invalidate()
+                self?.xpcConnection = nil
                 self?.connection = nil
             }
         })
 
+        self.xpcConnection = xpc
         let wrapper = XPCHelperWrapper(proxy: proxy)
         connection = wrapper
         return wrapper
